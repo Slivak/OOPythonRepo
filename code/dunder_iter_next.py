@@ -1,4 +1,4 @@
-class FRange:
+"""class FRange:
     def __init__(self, start=0.0, stop=0.0, step=1.0):
         self.start = start
         self.stop = stop
@@ -51,4 +51,25 @@ for row in fr2:
     for x in row:
         print(x, end=' ')
     print()
-print('_____________\n')
+print('_____________\n')"""
+
+class Nums:
+    def __init__(self, y):
+        self.y = y
+    def __next__(self):
+        if self.y < 100:
+            self.y += 1
+        else:
+            raise StopIteration
+
+    def __iter__(self):
+        self.y = 0
+        return self
+
+n1 = Nums(5)
+next(n1)
+print(n1.y)
+
+# __iter__ следует условию в __next__ и итерирует объекты
+for x in n1:
+    print(n1.y)
