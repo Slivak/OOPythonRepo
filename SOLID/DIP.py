@@ -1,37 +1,18 @@
 # DIP (Dependency Inversion Principle) - Принцип инверсии зависимостей
 # Не нужно создавать зависимости в классе
-# Вот и всё, а код внизу кал
-"""
-class Authorization():
-    def __init__(self, connector):
-        self.connection = connector.connect()
 
-    def authentification(self, credentials):
-        pass
-    def is_authentificated(self):
-        pass
-    def last_login(self):
-        pass
+class FXConverter:
+    def convert(self, from_currency, to_currency, amount):
+        print(f'{amount} {from_currency} = {amount * 1.2} {to_currency}')
+        return amount * 1.2
 
-class AnonumousAuth(Authorization):
-    pass
 
-class GitHubAuth(Authorization):
-    def last_login(self):
-        pass
+class App:
+    def start(self):
+        converter = FXConverter()
+        converter.convert('EUR', 'USD', 100)
 
-class FacebookAuth(Authorization):
-    pass
 
-class Permisson():
-    def __init__(self, auth: Authorization):
-        self.auth = auth
-
-    def has_permission(self):
-        pass
-
-class IsLoggedInPermission(Permisson):
-    def last_login(self):
-        pass
-
-"""
+if __name__ == '__main__':
+    app = App()
+    app.start()
